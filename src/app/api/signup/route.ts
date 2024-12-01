@@ -1,7 +1,7 @@
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/user.model";
 import bcrypt from "bcryptjs";
-// import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
+import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
 
 export async function POST(request: Request) {
   await dbConnect();
@@ -70,20 +70,20 @@ export async function POST(request: Request) {
     }
 
     // Send verification email
-    // const emailResponse = await sendVerificationEmail(
-    //   email,
-    //   username,
-    //   verifyCode
-    // );
-    // if (!emailResponse.success) {
-    //   return Response.json(
-    //     {
-    //       success: false,
-    //       message: emailResponse.message,
-    //     },
-    //     { status: 500 }
-    //   );
-    // }
+    const emailResponse = await sendVerificationEmail(
+      email,
+      username,
+      verifyCode
+    );
+    if (!emailResponse.success) {
+      return Response.json(
+        {
+          success: false,
+          message: emailResponse.message,
+        },
+        { status: 500 }
+      );
+    }
 
     return Response.json(
       {
