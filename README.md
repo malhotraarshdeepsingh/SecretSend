@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SecretSend
+This is a web application designed for secretly sending messages, featuring AI-powered suggestions for crafting messages. The project was developed as part of a Next.js course by Hitesh Choudhary, where the assignment involved integrating AI capabilities and implementing frontend routes to handle AI-generated responses.
 
-## Getting Started
+This repository includes the complete source code for the assignment, with all functionalities successfully implemented. Additionally, skeleton components have been added to enhance the user experience during loading states.
+## Acknowledgements
 
-First, run the development server:
+ - [Chai aur full stack NextJS](https://www.youtube.com/watch?v=OgS1ZWZItno&list=PLu71SKxNbfoBAaWGtn9GA2PTw0HO0tXzq)
+ - [useCompletion()](https://sdk.vercel.ai/docs/reference/ai-sdk-ui/use-completion)
+ - [Gemini Api Documentation](https://ai.google.dev/gemini-api)
+ - [NextAuth.js](https://next-auth.js.org/)
+ - [shadcn/ui/skeleton ](https://ui.shadcn.com/docs/components/skeleton)
+ - [useDebounceValue](https://usehooks-ts.com/react-hook/use-debounce-value)
+
+## Technologies Used
+
+### Frontend
+- **Next.js** – Framework for building React-based web applications.  
+- **React-hook-form** – Simplifies form handling and validation.  
+- **React-email/components** – For building and styling email templates.  
+
+### Backend
+- **NextAuth** – Authentication library for Next.js applications.  
+- **MongoDB** – NoSQL database for data storage.  
+- **Mongoose** – ODM library for MongoDB.  
+- **BcryptJS** – For password hashing and security.  
+
+### AI Integration
+- **GeminiAI** – Provides AI-based message suggestions.  
+
+### Utilities
+- **Axios** – For making HTTP requests.  
+- **Resend** – For email delivery services.  
+- **Zod** – For schema validation and type safety.
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`MONGODB_URI = mongodb://localhost:27017/secretsend`
+
+`RESEND_API_KEY`
+
+`NEXTAUTH_SECRET`
+
+`GEMINI_API_KEY`
+
+
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/malhotraarshdeepsingh/SecretSend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+  cd SecretSend
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Install dependencies
 
-## Learn More
+```bash
+  npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start the dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+  npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Lessons Learned
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+I learned how to use NextAuth for user authentication and how to implement email verification with it. I also explored the Zod validation library for the first time. Since this was my first experience working with AI, I gained valuable knowledge about how it is used on the backend and how to handle streaming AI responses. Implementing email verification for the very first time taught me how to use Resend and react-email/components to achieve it. Additionally, I independently implemented skeleton UI components, integrated Gemini AI, and created the frontend route for it, which gave me a lot of confidence in my skills.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Demo Video
+
+[Demo video](./demo/demo.mp4)
+
+## Screenshots
+
+![Home Page](./snap/home-page.PNG)
+This is the homepage of the web app, which uses the ShadCN library for UI components.
+![SignUp Page](./snap/signup-page.PNG)
+The Sign-Up page dynamically validates the uniqueness of the username by making database requests through a useDebounce function.
+![Login Page](./snap/login-page.PNG)
+This simple login page handles user authentication functionality.
+![Dashboard Page](./snap/dashboard-page.PNG)
+On the dashboard page, users can view messages, toggle message acceptance, and share their profile page by copying the link to the clipboard.
+![Profile Page](./snap/profile-page.PNG)
+On the profile page, AI-generated suggestion messages are displayed. Users can copy a message by clicking on it and send it.
