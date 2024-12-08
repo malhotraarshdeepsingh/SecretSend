@@ -2,6 +2,17 @@ import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/models/user.model";
 import bcrypt from "bcryptjs";
 import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
+import arcjet, { validateEmail } from "@arcjet/node";
+
+const aj = arcjet({
+  key: process.env.ARCJET_API_KEY!,
+  rules: [
+    validateEmail({
+      mode: "LIVE",
+      block: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"]
+    })
+  ]
+});
 
 export async function POST(request: Request) {
   await dbConnect();
@@ -34,6 +45,19 @@ export async function POST(request: Request) {
     const existingUserByEmail = await UserModel.findOne({ email });
     let verifyCode = Math.floor(100000 + Math.random() * 900000).toString();
 
+    const decision = await aj.protect(request, { email });
+    console.log(decision);
+
+    if (decision.isDenied()) {
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid email address",
+        },
+        { status: 400 }
+      );
+    }
+    
     if (existingUserByEmail) {
       if (existingUserByEmail.isVerified) {
         return Response.json(

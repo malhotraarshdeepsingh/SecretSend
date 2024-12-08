@@ -1,7 +1,7 @@
 # SecretSend
 This is a web application designed for secretly sending messages, featuring AI-powered suggestions for crafting messages. The project was developed as part of a Next.js course by Hitesh Choudhary, where the assignment involved integrating AI capabilities and implementing frontend routes to handle AI-generated responses.
 
-This repository includes the complete source code for the assignment, with all functionalities successfully implemented. Additionally, skeleton components have been added to enhance the user experience during loading states.
+This repository includes the complete source code for the assignment, with all functionalities successfully implemented. Additionally, skeleton components have been added to enhance the user experience during loading states and added arcjet for email verification for providing security to backend services.
 ## Acknowledgements
 
  - [Chai aur full stack NextJS](https://www.youtube.com/watch?v=OgS1ZWZItno&list=PLu71SKxNbfoBAaWGtn9GA2PTw0HO0tXzq)
@@ -31,6 +31,7 @@ This repository includes the complete source code for the assignment, with all f
 - **Axios** – For making HTTP requests.  
 - **Resend** – For email delivery services.  
 - **Zod** – For schema validation and type safety.
+- **Arcjet** – For email verification.
 
 
 ## Environment Variables
@@ -44,6 +45,8 @@ To run this project, you will need to add the following environment variables to
 `NEXTAUTH_SECRET`
 
 `GEMINI_API_KEY`
+
+`ARCJET_API_KEY`
 
 
 ## Run Locally
@@ -75,8 +78,7 @@ Start the dev
 
 ## Lessons Learned
 
-I learned how to use NextAuth for user authentication and how to implement email verification with it. I also explored the Zod validation library for the first time. Since this was my first experience working with AI, I gained valuable knowledge about how it is used on the backend and how to handle streaming AI responses. Implementing email verification for the very first time taught me how to use Resend and react-email/components to achieve it. Additionally, I independently implemented skeleton UI components, integrated Gemini AI, and created the frontend route for it, which gave me a lot of confidence in my skills.
-
+I learned how to use NextAuth for user authentication and how to implement email verification with it. I also explored the Zod validation library for the first time. Since this was my first experience working with AI, I gained valuable knowledge about how it is used on the backend and how to handle streaming AI responses. Implementing email verification for the very first time taught me how to use Resend and react-email/components to achieve it. Additionally, I independently implemented skeleton UI components, integrated Gemini AI, and created the frontend route for it, which gave me a lot of confidence in my skills. Aditionally added security features for backend services to protect against spam and temporary emails.
 
 ## Demo Video
 
